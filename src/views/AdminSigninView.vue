@@ -3,7 +3,6 @@
     <div class="form-l-wrapper">
       <h1>Create an account</h1>
       <form @submit.prevent="create" class="l-form">
-        <input type="text" class="input-l" placeholder="full name" v-model="username" />
         <input type="text" class="input-l" placeholder="phone number" v-model="phoneNumber" />
         <input type="email" class="input-l" placeholder="email address" v-model="email" />
         <input type="password" class="input-l" placeholder="8 character (special,lowercase,number)" v-model="password" />
@@ -28,7 +27,6 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const username = ref('')
 const password = ref('')
 const errMsg = ref('')
 const email = ref('')
@@ -38,7 +36,6 @@ const confirmPassword = ref('')
 const reset = () => {
   email.value = ''
   password.value = ''
-  username.value = ''
   phoneNumber.value = ''
   confirmPassword.value = ''
 }
@@ -48,7 +45,6 @@ const create = async () => {
   if (username.value !== '' && password.value !== '') {
     try {
       const response = await axios.post(`${serverHost}/api/v1/auth/register-admin`, {
-        username: username.value,
         email: email.value,
         password: password.value,
         phoneNumber: phoneNumber.value,
