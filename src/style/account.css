@@ -21,6 +21,11 @@
     font-weight: 400;
   }
 
+  .header-info h1 {
+    font-size: 1.2rem;
+    padding: 10px 0;
+  }
+
   .Account-game-p {
     gap: 20px;
     display: flex;
@@ -28,6 +33,7 @@
     overflow: hidden;
     overflow-x: scroll;
     overflow-y: hidden;
+    flex-direction: column;
     background-color: transparent;
   }
 
@@ -100,16 +106,18 @@
   .acc-m th,
   td {
     padding: 20px;
+    
   }
+  
 
   .acc-m td {
-    font-weight: 200;
+    font-weight: 400;
     text-align: center;
     border-bottom: none;
     text-transform: capitalize;
     color: var(--background-color);
-    border: 3px solid var(---light-secondary-color);
-    background-color: transparent;
+    border: 3px solid var(--secondary-color);
+    background-color: var(--light-secondary-color);
 
   }
 
@@ -117,13 +125,15 @@
     
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--background-color);
+    color: var(--light-secondary-color);
+
   }
 
   .Account-tbl-img {
     gap: 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .Account-pi {
@@ -132,6 +142,19 @@
     object-fit: cover;
     border-radius: 360%;
     object-position: center;
+  }
+
+  .it-c {
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .it-c h1 {
+    font-size: 1rem;
   }
 
   .Account-t-con {
@@ -163,7 +186,7 @@
   .icon-delete {
     width:24px;
     height: 24px;
-    fill: var(--red-color);
+    fill: var(--background-color);
   }
  
 }
@@ -197,7 +220,14 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
 .acc-m {
-  height: 428px;
+  height: 75vh;
+}
+.header-info h1 {
+  font-size: 1.5rem;
+
 }
 
+.Account-game-p {
+  flex-direction: row;
+}
 }

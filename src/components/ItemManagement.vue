@@ -4,8 +4,7 @@
       <h1><span>Welcome</span><br />Dusstech</h1>
     </div>
     <div class="Account-game-p">
-      <!-- loop this  -->
-      <div class="acc-m gm-m">
+      <div class="acc-m">
         <div class="main-header">
           <div class="header-info">
             <h1>Products Available</h1>
@@ -21,43 +20,39 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <template class="t-c" v-if="ProductData.length > 0">
-            <h1>No Product Found</h1>
-          </template>
-          <template v-else>
-            <tbody v-for="item in ProductData" :key="item">
-              <tr v-for="data in item" :key="data._id">
-                <td>
-                  <div class="Account-tbl-img">
-                    <img :src="data.image" alt="Account-p" class="Account-pi" />
-                  </div>
-                </td>
-                <td>
-                  <span>{{ data.name }}</span>
-                </td>
-                <td>
-                  <span>{{ data.price }}</span>
-                </td>
-                <td>
-                  <div class="Account-delete" @click="editData(EditProduct, data._id)">
-                    <FileIcon class="icon-delete" />
-                  </div>
-                </td>
-                <td>
-                  <div class="Account-delete" @click="deleteProduct(data._id)">
-                    <DeleteIcon class="icon-delete" />
-                  </div>
-                </td>
-              </tr>
-              <tr v-if="ProductData.length === 0">
-                <td colspan="8">No data</td>
-              </tr>
-            </tbody>
-          </template>
+          <tbody v-if="ProductData.length === 0">
+            <tr>
+              <td colspan="5">No Product Found</td>
+            </tr>
+          </tbody>
+          <tbody v-else>
+            <tr v-for="data in ProductData" :key="data._id">
+              <td>
+                <div class="Account-tbl-img">
+                  <img :src="data.image" alt="Account-p" class="Account-pi" />
+                </div>
+              </td>
+              <td>
+                <span>{{ data.name }}</span>
+              </td>
+              <td>
+                <span>{{ data.price }}</span>
+              </td>
+              <td>
+                <div class="Account-delete" @click="editData(EditProduct, data._id)">
+                  <FileIcon class="icon-delete" />
+                </div>
+              </td>
+              <td>
+                <div class="Account-delete" @click="deleteProduct(data._id)">
+                  <DeleteIcon class="icon-delete" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
-      <!-- loop this  -->
-      <div class="acc-m gm-m">
+      <div class="acc-m">
         <div class="main-header">
           <div class="header-info">
             <h1>Projects Available</h1>
@@ -72,39 +67,35 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <template class="t-c" v-if="ProjectData.length > 0">
-            <h1>No Product Found</h1>
-          </template>
-          <template>
-            <tbody v-for="item in ProjectData" :key="item">
-              <tr v-for="data in item" :key="data._id">
-                <td>
-                  <div class="Account-tbl-img">
-                    <img :src="data.image" alt="Account-p" class="Account-pi" />
-                  </div>
-                </td>
-                <td>
-                  <span>{{ data.title }}</span>
-                </td>
-                <td>
-                  <div class="Account-delete" @click="editData(EditProject, data._id)">
-                    <FileIcon class="icon-delete" />
-                  </div>
-                </td>
-                <td>
-                  <div class="Account-delete" @click="deleteProject(data._id)">
-                    <DeleteIcon class="icon-delete" />
-                  </div>
-                </td>
-              </tr>
-              <tr v-if="ProductData.length === 0">
-                <td colspan="8">No data</td>
-              </tr>
-            </tbody>
-          </template>
+          <tbody v-if="ProjectData.length === 0">
+            <tr>
+              <td colspan="4">No Project Found</td>
+            </tr>
+          </tbody>
+          <tbody v-else>
+            <tr v-for="data in ProjectData" :key="data._id">
+              <td>
+                <div class="Account-tbl-img">
+                  <img :src="data.image" alt="Account-p" class="Account-pi" />
+                </div>
+              </td>
+              <td>
+                <span>{{ data.title }}</span>
+              </td>
+              <td>
+                <div class="Account-delete" @click="editData(EditProject, data._id)">
+                  <FileIcon class="icon-delete" />
+                </div>
+              </td>
+              <td>
+                <div class="Account-delete" @click="deleteProject(data._id)">
+                  <DeleteIcon class="icon-delete" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
-      <!-- loop this  -->
     </div>
   </div>
   <Teleport to="body">
@@ -122,16 +113,17 @@
     </div>
   </Teleport>
 </template>
+
 <script setup>
 import axios from 'axios'
 import { ref, onMounted, shallowRef } from 'vue'
 import ExitIcon from '../icons/exitIcon.vue'
 import FileIcon from '../icons/fileIcon.vue'
 import DeleteIcon from '../icons/delete.vue'
-import EditProject from '../components/EditProject.vue'
-import EditProduct from '../components/EditProduct.vue'
+import EditProject from './EditProduct.vue'
+import EditProduct from './EditProduct.vue'
+import { Teleport } from 'vue'
 
-const message = ref()
 const isGameOpen = ref(false)
 const ProjectData = ref([])
 const ProductData = ref([])
@@ -139,11 +131,8 @@ const serverHost = import.meta.env.VITE_SERVER_HOST
 
 const getProject = async () => {
   try {
-    // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(`${serverHost}/api/v1/work`)
-    console.log(response.data)
     ProjectData.value = response.data
-    // ProjectData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -152,8 +141,6 @@ const getProject = async () => {
 const getProduct = async () => {
   try {
     const response = await axios.get(`${serverHost}/api/v1/products`)
-    console.log(response.data)
-    // ProductData.value = response.data.length > 0 ? [response.data] : []
     ProductData.value = response.data
   } catch (err) {
     console.log(err)
@@ -165,13 +152,11 @@ const showEdit = () => {
 }
 
 const activePage = shallowRef(EditProject)
-const ProductID = ref('')
-const WorkID = ref('')
+const DataID = ref('')
 
-const editData = (data, id) => {
-  activePage.value = data
-  ProductID.value = id
-  showEdit()
+const editData = (items, id) => {
+  activePage.value = items
+  DataID.value = id
 }
 
 async function updateProduct(formData) {
@@ -194,7 +179,7 @@ async function updateProduct(formData) {
       formDataa.append('image', formData.ProductImage)
     }
     const response = await axios.put(
-      `${serverHost}/api/v1/work/update/${WorkID.value}`,
+      `${serverHost}/api/v1/work/update/${DataID.value}`,
       formDataa,
       {
         headers: {
@@ -224,7 +209,7 @@ async function updateProject(formData) {
       formDataa.append('image', formData.ProjectImage)
     }
     const response = await axios.put(
-      `${serverHost}/api/v1/products/update/${ProductID.value}`,
+      `${serverHost}/api/v1/products/update/${DataID.value}`,
       formDataa,
       {
         headers: {
@@ -254,25 +239,25 @@ const deleteProject = async (id) => {
     })
 
     await getProject()
+    alert('Deleted')
   } catch (err) {
-    message.value = 'deletion failed'
+    console.error('Deletion failed:', err)
   }
-  alert('deleted')
 }
+
 const deleteProduct = async (id) => {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
 
-    const response = await axios.delete(`${serverHost}/api/v1/products/delete/${id}`,{
-        headers: { Authorization: `Bearer ${token}` }
-      }
-    )
+    const response = await axios.delete(`${serverHost}/api/v1/products/delete/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
 
     await getProduct()
+    alert('Deleted')
   } catch (err) {
-    message.value = 'deletion failed'
+    console.error('Deletion failed:', err)
   }
-  alert('deleted')
 }
 </script>
 
