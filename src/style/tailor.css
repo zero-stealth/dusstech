@@ -1,0 +1,89 @@
+@media screen {
+  .tailor-card {
+    gap: 20px;
+    display: flex;
+    padding: 10px 0;
+    cursor: pointer;
+    padding-bottom: 100px;
+    flex-direction: column;
+  }
+
+  .tailor-c {
+    gap: 20px;
+    padding: 10px;
+    display: flex;
+    min-width: 400px;
+    min-height: 100px;
+    border-radius: 12px;
+    align-items: center;
+    background-color: var(--background-color);
+  }
+
+  .tailor-img {
+    width: 40%;
+    height: 100%;
+    border-radius: 12px;
+    background-size: cover;
+  }
+
+  .tailor-info {
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .starIcon {
+    height: 20px;
+    width: 20px;
+    fill: var( --star-color);
+  }
+
+  .rates span {
+    font-size: .8rem;
+  }
+
+  .tailor-data {
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tailor-data h1 {
+    text-transform: capitalize;
+    font-size: .8rem;
+    }
+
+  .tailor-rating {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tailor-rating span {
+    text-align: start;
+    font-size: .8rem;
+
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+  .starIcon {
+    height: 24px;
+    width: 24px;
+  }
+
+  .tailor-card {
+    padding-bottom: 20px;
+  }
+
+  .tailor-data h1 {
+    font-size: 1rem;
+    }
+
+}

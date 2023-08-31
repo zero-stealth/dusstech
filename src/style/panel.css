@@ -1,0 +1,19 @@
+@media screen {
+    .home-panel {
+        height: 30%;
+        display: flex;
+        border-radius:20px;
+        align-items: flex-end;
+        background-size: cover;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+}
+

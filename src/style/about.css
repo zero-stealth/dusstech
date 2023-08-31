@@ -1,0 +1,173 @@
+@media screen {
+  .about-main {
+    gap: 10px;
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .abt-scope {
+    height: 100%;
+    display: flex;
+
+  }
+  
+
+  .img-scope-contain {
+    flex: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+
+  }
+
+  .info-scope {
+    height: 100%;
+
+  }
+
+  .img-scope {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+    animation: slid 30s linear infinite;
+
+  }
+  
+  .img-scope span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(350px);
+  }
+  
+  .img-scope span img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+    transition: 2s;
+  }
+  
+  .img-scope span:hover img {
+    transform: translateY(-30px) scale(1);
+  }
+
+
+  @keyframes slid {
+    0% {
+      transform: perspective(3000px) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(3000px) rotateY(360deg);
+    }
+  }
+
+  .abt-info {
+    flex: 50%;
+    display: flex;
+    padding: 10px;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--tertiary-color);
+    background: linear-gradient(-15deg, #13d401, #4825c7, #6bd7ff);
+    background-size: 300% 300%;
+    animation: gradient 4s ease infinite;
+
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+
+  .abt-glass {
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--light-color);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+  }
+
+  .abt-glass h1 {
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .abt-glass p {
+    font-size: .8rem;
+    text-align: justify;
+  }
+
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+  .about-main {
+    padding: 30px;
+  }
+
+
+  .img-scope-contain {
+    min-height: 60%;
+  }
+
+
+
+  .img-scope {
+    width: 200px;
+    height: 200px;
+
+  }
+  
+
+
+  .abt-info {
+    padding: 30px;
+
+  }
+
+  .abt-glass h1 {
+    font-size: 2rem;
+  }
+
+  .abt-glass p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+}

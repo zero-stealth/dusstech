@@ -1,0 +1,117 @@
+@import './stylesheet.css';
+
+@media screen {
+  * {
+    /* default-colors  */
+    --light-color:#f0f0f0ff;
+    --primary-color:#1d1c1c;
+    --background-color:#ffff;
+    --secondary-color:#4825C7;
+    --tertiary-color: #13d401;
+    --light-secondary-color: #6bd7ff ;
+    --gradient-color: linear-gradient(-15deg, hwb(253 14% 22%) 0%, hwb(196 4% 0%) 100%);
+    margin: 0;
+    padding: 0;
+    
+    box-sizing: border-box;
+  }
+
+  body {
+    font-weight: 300;
+    font-family: 'Poppins';
+    color: var(--primary-color);
+    background-color: var(--background-color);
+    
+
+    
+  }
+
+
+  h1, h2 {
+    font-weight: 500;
+  }
+
+  input {
+    outline: none;
+  }
+
+  .mobilenav-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  button:active {
+    outline: none;
+  }
+
+  .desk-show {
+    display: none;
+  }
+
+  select {
+    outline: none;
+  }
+
+  .select:hover {
+    outline: none;
+
+  }
+  .select:focus {
+    outline: none;
+  }
+
+  
+
+
+}
+
+
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--background-color) var(--secondary-color);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--secondary-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--background-color);
+  border: 4px solid var(--secondary-color);
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 14px;
+  }
+
+
+
+}
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}
