@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="form-container-h">
       <h1>Project updates</h1>
     </div>
@@ -38,7 +37,6 @@
         <button type="submit" class="btn-f-f">Submit</button>
       </div>
     </form>
-  </div>
 </template>
 
 <script setup>
@@ -48,6 +46,7 @@ const emit = defineEmits(['formSubmit'])
 const Name = ref('')
 const ProjectImage = ref(null);
 const ProjectDescription = ref('')
+
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0]

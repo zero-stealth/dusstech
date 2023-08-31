@@ -49,7 +49,7 @@
                   </div>
                 </td>
               </tr>
-              <tr v-if="cardData.length === 0">
+              <tr v-if="ProductData.length === 0">
                 <td colspan="8">No data</td>
               </tr>
             </tbody>
@@ -97,7 +97,7 @@
                   </div>
                 </td>
               </tr>
-              <tr v-if="cardData.length === 0">
+              <tr v-if="ProductData.length === 0">
                 <td colspan="8">No data</td>
               </tr>
             </tbody>

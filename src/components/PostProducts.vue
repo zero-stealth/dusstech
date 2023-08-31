@@ -1,12 +1,10 @@
 <template>
-  <div>
     <div class="form-container-h">
-      <h1>Post Game</h1>
+      <h1>Post Products</h1>
     </div>
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <div class="form-group">
-          <div class="form-group">
           <label for="Title">Quantity:</label>
           <input
             v-model="Quantity"
@@ -16,17 +14,18 @@
             id="Quantity"
           />
         </div>
-          <label for="Title">ProjectPrice:</label>
+        <div class="form-group">
+          <label for="Title">Product Price:</label>
           <input
-            v-model="ProjectPrice"
+            v-model="ProductPrice"
             type="text"
             class="form-g-input"
             placeholder="10000"
-            id="ProjectPrice"
+            id="ProductPrice"
           />
         </div>
         <div class="form-group">
-          <label for="Name">Project Name:</label>
+          <label for="Name">Product Name:</label>
           <input
             v-model="Name"
             type="text"
@@ -36,29 +35,28 @@
           />
         </div>
         <div class="form-group">
-          <label for="ProjectImage">Project Image:</label>
+          <label for="ProductImage">Product Image:</label>
           <input
-            @change="handleProjectImage"
+            @change="handleProductImage"
             type="file"
             class="form-g-input"
-            id="ProjectImage"
+            id="ProductImage"
             accept="image/*"
           />
         </div>
         <div class="form-group">
-          <label for="Name">Project Description:</label>
+          <label for="Name">Product Description:</label>
           <textarea
-            v-model="ProjectDescription"
+            v-model="ProductDescription"
             type="text"
             class="form-g-input"
             placeholder="branded tshirt is good"
-            id="ProjectDescription"
+            id="ProductDescription"
           />
         </div>
         <button type="submit" class="btn-f-f">Submit</button>
       </div>
     </form>
-  </div>
 </template>
 
 <script setup>
@@ -67,9 +65,18 @@ import axios from 'axios'
 
 const Name = ref('')
 const Quantity = ref('')
-const ProjectPrice = ref('')
-const ProjectImage = ref(null);
-const ProjectDescription = ref('')
+const ProductPrice = ref('')
+const ProductImage = ref(null);
+const ProductDescription = ref('')
+
+const reset = () => {
+  Name.value = ''
+  Quantity.value = ''
+  ProductPrice.value = ''
+  ProductImage.value = ''
+  ProductDescription.value = ''
+}
+
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0]
@@ -78,26 +85,26 @@ function handleFileUpload(event, targetRef) {
   }
 }
 
-function handleProjectImage(event) {
-  handleFileUpload(event, ProjectImage)
+function handleProductImage(event) {
+  handleFileUpload(event, ProductImage)
 }
 const serverHost = import.meta.env.VITE_SERVER_HOST
 async function handleSubmit() {
   if (
     Name.value.trim() !== '' &&
-    ProjectImage.value !== null &&
+    ProductImage.value !== null &&
     Quantity.value.trim() !== ''&&
-    ProjectPrice.value.trim() !== ''&&
-    ProjectDescription.value.trim() !== ''
+    ProductPrice.value.trim() !== ''&&
+    ProductDescription.value.trim() !== ''
   ) {
     const user = JSON.parse(localStorage.getItem('token'))
     try {
       const formData = new FormData()
       formData.append('name', Name.value)
       formData.append('quantity', Quantity.value)
-      formData.append('image', ProjectImage.value)
-      formData.append('price', ProjectPrice.value)
-      formData.append('description', ProjectDescription.value)
+      formData.append('image', ProductImage.value)
+      formData.append('price', ProductPrice.value)
+      formData.append('description', ProductDescription.value)
 
       const response = await axios.post(`${serverHost}/api/v1/products/create`, formData, {
         headers: {
@@ -105,7 +112,8 @@ async function handleSubmit() {
           Authorization: `Bearer ${user}`
         }
       })
-      alert('project posted')
+      alert('Product posted')
+      reset();
     } catch (err) {}
   } else {
     alert('No empty fields allowed')

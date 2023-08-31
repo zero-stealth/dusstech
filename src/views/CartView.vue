@@ -1,106 +1,62 @@
-
 <template>
-<template v-if="show">
-  <div class="cart-nothing">
-    <h1>nothing on cart 😇</h1>
-  </div>
-</template>
-<template v-else>
-  <div class="cart-contain">
-    <div
-      class="cart-layout"
-      v-for="({ image, name, price }, index) in filteredProducts"
-      :key="index"
-    >
-      <div class="cart-lay1" :style="{ backgroundImage: `url(${image})` }"></div>
-      <div class="cart-lay2">
-        <div class="cart-h">
-          <h1>{{ name }}</h1>
-        </div>
-        <div class="sideline">
-          <div class="cart-price">
-            <span>{{ price }}</span>
-          </div>
-          <div class="cart-no">
-            <div class="inc-contain">
-              <div class="cart-in" @click="incrementItemNo()">
-                <addIcon class="icon-add" />
-              </div>
-              <div class="itemNo">{{ itemNo }}</div>
-              <div class="cart-in" @click="decrementItemNo()">
-                <minusIcon class="icon-minus" />
-              </div>
-            </div>
-            <div class="inc-delete">
-              <deleteIcon class="icon-delete" />
-            </div>
-          </div>
-        </div>
-        <CheckOut :subtotal="price" :delivery="delivery" :name="name" :price="price" class="show-ds" />
+  <div>
+    <template v-if="Name == ''">
+      <div class="cart-nothing">
+        <h1>Nothing in cart 😇</h1>
       </div>
-    </div>
-    <CheckOut :subtotal="subtotal" :delivery="delivery" :name="name" :price="price" class="show-mb" />
+    </template>
+    <template v-else>
+      <div class="cart-contain">
+        <div class="cart-layout">
+        <div class="cart-lay1" :style="{ backgroundImage: `url(${image})` }">
+        </div>
+          <div class="cart-lay2">
+            <div class="card-info">
+            <h1>Name : <span>{{ Name }}</span></h1>
+            <h1>Price : <span>ksh {{ price }}</span></h1>
+          </div>
+            <CheckOut :subtotal="price" :productName="Name" :productPrice="price" class="show-ds" />
+          </div>
+        </div>
+          <CheckOut :subtotal="price" :productName="Name" :productPrice="price" class="show-mb" />
+      </div>
+    </template>
   </div>
 </template>
-</template>
+
 <script setup>
-import { ref, watchEffect, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import axios from 'axios'
-import addIcon from '@/icons/add.vue'
-import minusIcon from '@/icons/minus.vue'
-import deleteIcon from '@/icons/delete.vue'
-import CheckOut from '@/components/CheckOut.vue'
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import CheckOut from '@/components/CheckOut.vue';
 
-const route = useRoute()
-const show = ref(false)
+const route = useRoute();
+const param = route.params.cartID;
+const Name = ref('');
+const price = ref('');
+const quantity = ref('');
+const description = ref('');
+const image = ref(null);
+const itemNo = ref(1);
 
-const param = route.params.cartID
-const data = ref([])
+const serverHost = import.meta.env.VITE_SERVER_HOST;
 
-
-watchEffect(() => {
-  if (param === 'empty') {
-    show.value = !show.value
-  } else {
-    show.value = false
-  }
-})
-
-const itemNo = ref(1)
-
-const incrementItemNo = () => {
-  itemNo.value++
-}
-
-const decrementItemNo = () => {
-  if (itemNo.value > 1) {
-    itemNo.value--
-  } else {
-    itemNo.value = 1
-  }
-}
-
-const serverHost = import.meta.env.VITE_SERVER_HOST
-
-const getCard = async () => {
+const getCart = async () => {
   try {
-    const response = await axios.get(
-      `${serverHost}/products/${param}`
-    )
-    data.value = response.data
+    const response = await axios.get(`${serverHost}/api/v1/products/${param}`);
+    image.value = response.data.image;
+    Name.value = response.data.name;
+    price.value = response.data.price;
+    quantity.value = response.data.quantity;
+    description.value = response.data.description;
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-}
+};
 
 onMounted(() => {
-  getCard()
-})
-
-// const filteredProducts = computed(() => {
-//   return data.filter((d) => d.id.includes(param))
-// })
+  getCart();
+});
 
 </script>
 

@@ -1,6 +1,6 @@
 <script setup>
 import { ref  } from "vue";
-import p1 from "../assets/ads.jpg";
+import p1 from "@/assets/ads.jpg";
 import p2 from "@/assets/top.jpg";
 
 
@@ -19,7 +19,7 @@ images = [
 
 setInterval(() => {
   defaultImage.value = images[Math.floor(Math.random() * images.length)].image;
-}, 10000);
+}, 8000);
 
 
 </script>

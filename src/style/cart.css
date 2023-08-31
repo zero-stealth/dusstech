@@ -15,10 +15,14 @@
 
   .cart-contain {
     gap: 20px;
+    margin: 10px;
     display: flex;
     padding: 10px;
+    border-radius: 12px;
     height:fit-content;
     flex-direction: column;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
   }
 
   .cart-layout {
@@ -38,7 +42,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    
+
   }
+
 
   .cart-lay2 {
     flex: 50%;
@@ -75,29 +82,36 @@
     justify-content: space-between;
   }
 
-  .star-con,
-  .icon-delete,
-  .cart-like {
-    height: 20px;
-    width: 20px;
-  }
-
-  .icon-add,
-  .icon-minus {
-    height: 12px;
-    width: 12px;
-    fill: var(--background-color);
-  }
-
-  .star-con,
-  .icon-delete {
-    fill: var(--primary-color);
-  }
-
-  .cart-no {
+  .card-info {
+    gap: 2px;
+    gap: 10px;
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    padding: 10px;
+    flex-direction: column;
+    color: var(--primary-color);
+  }
+
+  .card-info h1 {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+
+  .card-info span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--light-secondary-color);
+  }
+
+  .card-info p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: justify;
+  }
+
+  .quantity-p h1 {
+    font-size: .9rem;
   }
 
   .inc-contain {
@@ -130,6 +144,7 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
   .cart-contain {
+    margin: 20px;
     padding-bottom: 0;
   }
 
@@ -149,18 +164,6 @@
     font-size:  .7rem;
   }
 
-
-  .star-con,
-  .icon-delete,
-  .cart-like {
-    height: 24px;
-    width: 24px;
-  }
-
-  .cart-in {
-    height: 24px;
-    width: 24px;
-  }
 
   .cart-layout {
     gap: 20px;

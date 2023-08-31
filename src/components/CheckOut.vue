@@ -1,9 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const { subtotal, delivery, productName, productPrice } = defineProps([
+const { subtotal, productName, productPrice } = defineProps([
   'subtotal',
-  'delivery',
   'productName',
   'productPrice'
 ])

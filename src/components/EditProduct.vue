@@ -1,20 +1,9 @@
 <template>
-  <div>
     <div class="form-container-h">
       <h1>Product updates</h1>
     </div>
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
-        <div class="form-group">
-          <label for="Title">ProjectPrice:</label>
-          <input
-            v-model="ProjectPrice"
-            type="text"
-            class="form-g-input"
-            placeholder="10000"
-            id="ProjectPrice"
-          />
-        </div>
         <div class="form-group">
           <label for="Title">Quantity:</label>
           <input
@@ -26,7 +15,17 @@
           />
         </div>
         <div class="form-group">
-          <label for="Name">Project Name:</label>
+          <label for="Title">Product Price:</label>
+          <input
+            v-model="ProductPrice"
+            type="text"
+            class="form-g-input"
+            placeholder="10000"
+            id="ProductPrice"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Name">Product Name:</label>
           <input
             v-model="Name"
             type="text"
@@ -36,29 +35,28 @@
           />
         </div>
         <div class="form-group">
-          <label for="ProjectImage">Project Image:</label>
+          <label for="ProductImage">Product Image:</label>
           <input
-            @change="handleProjectImage"
+            @change="handleProductImage"
             type="file"
             class="form-g-input"
-            id="ProjectImage"
+            id="ProductImage"
             accept="image/*"
           />
         </div>
         <div class="form-group">
-          <label for="Name">Project Description:</label>
+          <label for="Name">Product Description:</label>
           <textarea
-            v-model="ProjectDescription"
+            v-model="ProductDescription"
             type="text"
             class="form-g-input"
             placeholder="branded tshirt is good"
-            id="ProjectDescription"
+            id="ProductDescription"
           />
         </div>
         <button type="submit" class="btn-f-f">Submit</button>
       </div>
     </form>
-  </div>
 </template>
 
 <script setup>
@@ -68,8 +66,8 @@ const emit = defineEmits(['formSubmitProduct'])
 const Name = ref('')
 const Quantity = ref('')
 const ProductPrice = ref('')
-const ProjectImage = ref(null);
-const ProjectDescription = ref('')
+const ProductImage = ref(null);
+const ProductDescription = ref('')
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0]
@@ -79,7 +77,7 @@ function handleFileUpload(event, targetRef) {
 }
 
 function handleProductImage(event) {
-  handleFileUpload(event, ProjectImage)
+  handleFileUpload(event, ProductImage)
 }
 
 
@@ -88,9 +86,9 @@ function handleSubmit() {
     const formData = {
       name: Name.value,
       quantity: Quantity.value,
-      image: ProjectImage.value,
+      image: ProductImage.value,
       price: ProductPrice.value,
-      description: ProjectDescription.value,
+      description: ProductDescription.value,
     }
 
     emit('formSubmitProduct', formData)

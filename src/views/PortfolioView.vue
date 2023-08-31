@@ -3,7 +3,7 @@
   <div class="portfolio-container">
     <div class="portfolio-content">
       <div class="portfolio-header">
-        <h1>Some of the data we have done</h1>
+        <h1>Some of the projects we have done</h1>
       </div>
       <div
         class="portfolio-wrapper"

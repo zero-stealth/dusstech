@@ -35,16 +35,18 @@ onMounted(() => {
       <div class="collection-wrapper">
         <div
           class="trending-c"
-          v-for="({ image, name, quantity, price }, index) in data"
+          v-for="({ _id, image, name, quantity, price ,  description}, index) in data"
           :key="index"
         >
           <img :src="image" :alt="name" class="card-b-img" />
           <div class="card-info">
-            <h1>{{ name }}</h1>
-            <span>{{ quantity }}</span>
-            <span>ksh {{ price }}</span>
-            <p>description</p>
-            <button @click="shop(index)" class="product-btn">order now</button>
+            <div class="quantity-p">
+              <h1>Quantity : <span>{{ quantity }}</span></h1>
+            </div>
+            <h1>Name : <span>{{ name }}</span></h1>
+            <h1>Price : <span>ksh {{ price }}</span></h1>
+           <p>{{description}}</p>
+            <button @click="shop(_id)" class="product-btn">order now</button>
           </div>
         </div>
       </div>

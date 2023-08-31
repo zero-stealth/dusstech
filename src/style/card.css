@@ -6,17 +6,6 @@
     flex-direction: column;
   }
 
-  .collection-wrapper {
-    gap: 15px;
-    width: 100%;
-    display: flex;
-    overflow: hidden;
-    overflow-y: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE 10+ */
-    overflow-x: scroll;
-    cursor: pointer;
-  }
 
 
   .collection-header {
@@ -74,17 +63,8 @@
     fill: var(--secondary-color);
   }
 
-  .card-info {
-    gap: 2px;
-    display: flex;
-    padding: 10px;
-    flex-direction: column;
-  }
+ 
 
-  .card-info h1 {
-    text-transform: capitalize;
-    font-size: 1rem;
-  }
 
   .card-info span {
     font-size: 0.8rem;
@@ -93,18 +73,20 @@
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+  .collection-card {
+    padding-bottom: 50px;
+    gap: 40px;
+  }
 
-    .collection-card {
-        padding-bottom: 50px;
-        gap: 40px;
-
-      }
-    
   .collection-header h1 {
     font-size: 1.2rem;
   }
 
   .collection-header span {
     font-size: 1rem;
+  }
+
+  .collection-wrapper { 
+    display: flex;
   }
 }

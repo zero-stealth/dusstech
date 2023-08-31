@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="form-container-h">
       <h1>Post Projects</h1>
     </div>
@@ -38,7 +37,6 @@
         <button type="submit" class="btn-f-f">Submit</button>
       </div>
     </form>
-  </div>
 </template>
 
 <script setup>
@@ -49,6 +47,12 @@ const Name = ref('')
 const ProjectImage = ref(null)
 const ProjectDescription = ref('')
 
+
+const reset = () => {
+  Name.value = ''
+  ProjectImage.value = ''
+  ProjectDescription.value = ''
+}
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0]
@@ -83,6 +87,7 @@ async function handleSubmit() {
         }
       })
       alert('project posted')
+      reset()
     } catch (err) {}
   } else {
     alert('No empty fields allowed')
