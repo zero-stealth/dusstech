@@ -14,14 +14,14 @@
   }
 
   .match-table thead {
-    color: var(--background-color);
-    background-color: var(--primary-color);
+    color: var(--light-secondary-color);
+    background-color: var(--light-secondary-color);
   }
 
   .match-table th, td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--light-secondary-color);
   }
 
   .match-table th {

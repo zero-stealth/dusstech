@@ -3,10 +3,10 @@
     <div class="form-l-wrapper">
       <h1>Create an account</h1>
       <form @submit.prevent="create" class="l-form">
-        <input type="text" class="input-l" placeholder="phone number" v-model="phoneNumber" />
         <input type="email" class="input-l" placeholder="email address" v-model="email" />
-        <input type="password" class="input-l" placeholder="8 character (special,lowercase,number)" v-model="password" />
-        <input type="password" class="input-l" placeholder="8 character (special,lowercase,number)" v-model="confirmPassword" />
+        <input type="text" class="input-l" placeholder="phone number" v-model="phoneNumber" />
+        <input type="password" class="input-l" placeholder="password 8 character (capital,lowercase,number)" v-model="password" />
+        <input type="password" class="input-l" placeholder="confirm Password" v-model="confirmPassword" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Sign up</button>
       </form>
@@ -42,24 +42,23 @@ const reset = () => {
 const serverHost = import.meta.env.VITE_SERVER_HOST
 
 const create = async () => {
-  if (username.value !== '' && password.value !== '') {
+  if (email.value !== '' && password.value !== '') {
     try {
       const response = await axios.post(`${serverHost}/api/v1/auth/register-admin`, {
         email: email.value,
         password: password.value,
         phoneNumber: phoneNumber.value,
+        confirmPassword: confirmPassword.value,
       })
-      console.log(response.data) // Handle the response data as needed
       const token = response.data.token
-      const id = response.data._id
-      
-      localStorage.setItem('username', username)
+      const email = response.data.email
+      localStorage.setItem('email', email)
       localStorage.setItem('token', JSON.stringify(token))
-      localStorage.setItem('id', id)
 
       router.push({ name: 'Panel' })
     } catch (error) {
-      console.error(error)
+    errMsg.value = 'Password must contain uppercase, number and special characters'
+
     }
   } else {
     errMsg.value = 'Write something'

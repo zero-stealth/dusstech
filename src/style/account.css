@@ -9,7 +9,6 @@
   .Account-header {
     padding: 20px 0;
     font-size: 0.7rem;
-    color: var(--light-color);
     text-transform: capitalize;
   }
 
@@ -23,14 +22,13 @@
   }
 
   .Account-game-p {
-    padding: 10px;
     gap: 20px;
     display: flex;
     height: inherit;
     overflow: hidden;
     overflow-x: scroll;
     overflow-y: hidden;
-    background-color: var(--dark-primary-color);
+    background-color: transparent;
   }
 
   .Account-info {
@@ -50,7 +48,7 @@
     min-width: 200px;
     border-radius: 8px;
     flex-direction: column;
-    background-color: var(--dark-primary-color);
+    background-color: transparent;
   }
 
   .Account-card h5 {
@@ -78,7 +76,6 @@
   }
 
   .acc-m {
-    padding: 20px;
     height: 100%;
     min-height: 100%;
     min-width: 100%;
@@ -86,17 +83,17 @@
     overflow-x: auto;
     overflow-y: auto;
     border-radius: 8px;
-    background-color: var(--dark-primary-color);
+    background-color: transparent;
   }
 
   .gm-m {
     overflow-x: auto;
-    background-color: var(--dark-primary-color);
+    background-color: transparent;
 
   }
 
   .acc-m thead {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: var(--background-color);
   }
 
@@ -111,8 +108,8 @@
     border-bottom: none;
     text-transform: capitalize;
     color: var(--background-color);
-    border: 3px solid var(--primary-color);
-    background-color: var(--light-primary-color);
+    border: 3px solid var(---light-secondary-color);
+    background-color: transparent;
 
   }
 
@@ -120,7 +117,7 @@
     
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--light-color);
+    color: var(--background-color);
   }
 
   .Account-tbl-img {
@@ -154,33 +151,6 @@
     transition: all 0.8s ease 0s;
     -webkit-transition: all 0.8s ease 0s;
     background-color: var(--primary-color);
-  }
-
-  .Account-mode {
-    width: 25px;
-    height: 25px;
-    border-radius: 360%;
-    background-color: var(--light-primary-color);
-  }
-
-  .Account-toggle span {
-    font-size: .8rem;
-    font-weight: 600;
-    color: var(--light-color);
-  }
-
-  .on {
-    display: flex;
-    background-color: var(--secondary-color);
-  }
-
-  .on span {
-    color: var(--light-primary-color);
-  }
-
-  .off {
-    display: flex;
-    flex-direction: row-reverse;
   }
 
   .Account-delete {

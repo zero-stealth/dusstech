@@ -42,7 +42,7 @@ onMounted(() => {
           <div class="card-info">
             <h1>{{ name }}</h1>
             <span>{{ quantity }}</span>
-            <span>{{ price }}</span>
+            <span>ksh {{ price }}</span>
             <p>description</p>
             <button @click="shop(index)" class="product-btn">order now</button>
           </div>

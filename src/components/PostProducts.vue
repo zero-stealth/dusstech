@@ -6,26 +6,7 @@
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <div class="form-group">
-          <label for="ProjectImage">Project Image:</label>
-          <input
-            @change="handleProjectImage"
-            type="file"
-            class="form-g-input"
-            id="ProjectImage"
-            accept="image/*"
-          />
-        </div>
-        <div class="form-group">
-          <label for="Title">ProjectPrice:</label>
-          <input
-            v-model="ProjectPrice"
-            type="text"
-            class="form-g-input"
-            placeholder="10000"
-            id="ProjectPrice"
-          />
-        </div>
-        <div class="form-group">
+          <div class="form-group">
           <label for="Title">Quantity:</label>
           <input
             v-model="Quantity"
@@ -33,6 +14,15 @@
             class="form-g-input"
             placeholder="1"
             id="Quantity"
+          />
+        </div>
+          <label for="Title">ProjectPrice:</label>
+          <input
+            v-model="ProjectPrice"
+            type="text"
+            class="form-g-input"
+            placeholder="10000"
+            id="ProjectPrice"
           />
         </div>
         <div class="form-group">
@@ -46,12 +36,22 @@
           />
         </div>
         <div class="form-group">
+          <label for="ProjectImage">Project Image:</label>
+          <input
+            @change="handleProjectImage"
+            type="file"
+            class="form-g-input"
+            id="ProjectImage"
+            accept="image/*"
+          />
+        </div>
+        <div class="form-group">
           <label for="Name">Project Description:</label>
           <textarea
             v-model="ProjectDescription"
             type="text"
             class="form-g-input"
-            placeholder="branded tshirt"
+            placeholder="branded tshirt is good"
             id="ProjectDescription"
           />
         </div>

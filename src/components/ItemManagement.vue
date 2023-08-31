@@ -8,7 +8,7 @@
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
-            <h1>Product</h1>
+            <h1>Products Available</h1>
           </div>
         </div>
         <table>
@@ -60,7 +60,7 @@
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
-            <h1>Project</h1>
+            <h1>Projects Available</h1>
           </div>
         </div>
         <table>

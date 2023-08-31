@@ -6,16 +6,6 @@
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <div class="form-group">
-          <label for="ProjectImage">Project Image:</label>
-          <input
-            @change="handleProjectImage"
-            type="file"
-            class="form-g-input"
-            id="ProjectImage"
-            accept="image/*"
-          />
-        </div>
-        <div class="form-group">
           <label for="Name">Project Name:</label>
           <input
             v-model="Name"
@@ -26,12 +16,22 @@
           />
         </div>
         <div class="form-group">
-          <label for="Name">Project Description:</label>
+          <label for="ProjectImage">Project Image:</label>
           <input
+            @change="handleProjectImage"
+            type="file"
+            class="form-g-input"
+            id="ProjectImage"
+            accept="image/*"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Name">Project Description:</label>
+          <textarea
             v-model="ProjectDescription"
             type="text"
             class="form-g-input"
-            placeholder="llogo design is done by AI"
+            placeholder="logo design done by Adobe"
             id="ProjectDescription"
           />
         </div>

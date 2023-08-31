@@ -18,12 +18,12 @@ const router = createRouter({
       }
     },
     {
-      path: '/Login',
+      path: '/a-login',
       name: 'AdminLogin',
       component: () => import('../views/AdminLoginView.vue')
     },
     {
-      path: '/Signin',
+      path: '/a-signin',
       name: 'AdminSignin',
       component: () => import('../views/AdminSigninView.vue')
     },

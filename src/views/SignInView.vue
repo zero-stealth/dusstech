@@ -1,22 +1,29 @@
 <template>
-  <div
-    class="auth-container">
+  <div class="auth-container">
     <div class="form-l-wrapper">
       <h1>Create an account</h1>
       <form @submit.prevent="create" class="l-form">
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
-        <input type="password" class="input-l" placeholder="Password" v-model="password" />
-        <input type="password" class="input-l" placeholder="Confirm password" v-model="confirmPassword" />
+        <input
+          type="password"
+          class="input-l"
+          placeholder="password 8 character (capital,lowercase,number)"
+          v-model="password"
+        />
+        <input
+          type="password"
+          class="input-l"
+          placeholder="confirm Password"
+          v-model="confirmPassword"
+        />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Sign up</button>
       </form>
-       <span>or</span> 
+      <span>or</span>
       <div class="l-alternatives">
-        <button class="alt-btn" @click="login">
-          Login
-        </button>
-        <span @click="goHome()" class="reverse">Go back home</span> 
-      </div> 
+        <button class="alt-btn" @click="login">Login</button>
+        <span @click="goHome()" class="reverse">Go back home</span>
+      </div>
     </div>
   </div>
 </template>
@@ -27,7 +34,6 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const username = ref('')
 const password = ref('')
 const errMsg = ref('')
 const email = ref('')
@@ -42,25 +48,21 @@ const reset = () => {
 const serverHost = import.meta.env.VITE_SERVER_HOST
 
 const create = async () => {
-  if (username.value !== '' && password.value !== '') {
+  if (email.value !== '' && password.value !== '') {
     try {
       const response = await axios.post(`${serverHost}/api/v1/auth/register`, {
-        username: username.value,
         email: email.value,
-        password: password.value,
+        password: password.value
       })
+
       const token = response.data.token
-      const id = response.data._id
-      localStorage.setItem('token', token)
-      localStorage.setItem('id', id)
-      router.push({ name: 'Vip' })
+      localStorage.setItem('token', JSON.stringify(token))
+      router.push({ name: 'Home' })
     } catch (error) {
-      errMsg.value = 'Invalid email or password';
-      alert(errMsg.value)
+      errMsg.value = 'Password must contain uppercase, number and special characters'
     }
   } else {
     errMsg.value = 'Write something'
-    alert(errMsg.value)
     reset()
   }
 }

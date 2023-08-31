@@ -61,7 +61,7 @@
 
   .form-l-wrapper p {
     font-size: 0.8rem;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
   }
 
   .l-form {
@@ -89,6 +89,7 @@
   }
 
   .input-l::placeholder {
+    text-transform: capitalize;
     color: var(--light-secondary-color);
   }
 

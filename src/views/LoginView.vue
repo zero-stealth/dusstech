@@ -55,31 +55,21 @@ const login = async () => {
         password: password.value
       });
 
-      const responseData = response.data;
-
-      const token = responseData.token;
+      const token = response.data.token
       if (token) {
-        const token = responseData.token;
-        const username = responseData.username;
-        const id = responseData._id;
+        localStorage.setItem('token', JSON.stringify(token))
 
-        localStorage.setItem('username', username);
-        localStorage.setItem('token', JSON.stringify(token));
-        localStorage.setItem('id', id);
-
-        router.push({ name: 'Vip' });
+        router.push({ name: 'Home' })
       } else {
-        errMsg.value = 'Invalid email or password';
+        errMsg.value = 'Invalid email or password'
       }
     } catch (error) {
-      errMsg.value = 'Login failed. Please check your email and password.';
+      errMsg.value = 'Login failed. Please check your email and password.'
     }
   } else {
-    errMsg.value = 'Please enter your email and password.';
-    alert(errMsg.value);
-    reset();
+    errMsg.value = 'Please enter your email and password.'
   }
-};
+}
 
 const forgot = () => {
   title.value = 'Reset your account'

@@ -45,17 +45,11 @@ const login = async () => {
         password: password.value
       })
 
-      console.log(response.data)
 
       const token = response.data.token
       if (token) {
-        const id = response.data._id
-        const isAdmin = response.data.isAdmin
-        const adminusername = response.data.username
-
-        localStorage.setItem('id', id)
-        localStorage.setItem('admin', isAdmin)
-        localStorage.setItem('username', adminusername)
+        const email = response.data.email
+        localStorage.setItem('email', email)
         localStorage.setItem('token', JSON.stringify(token))
 
         router.push({ name: 'Panel' })
@@ -63,14 +57,13 @@ const login = async () => {
         errMsg.value = 'Invalid email or password'
       }
     } catch (error) {
-      console.error(error)
       errMsg.value = 'Login failed. Please check your email and password.'
     }
   } else {
     errMsg.value = 'Please enter your email and password.'
-    alert(errMsg.value)
   }
 }
+
 const forgot = () => {
   title.value = 'Reset Your Account'
   resetPage.value = !resetPage.value
@@ -94,7 +87,7 @@ const resetAuth = async () => {
       console.log(response.data)
       resetPage.value = !resetPage.value
     } catch (error) {
-      errMsg.value = error
+      errMsg.value = 'email does not exist'
     }
   } else {
     errMsg.value = 'Write something'

@@ -10,9 +10,23 @@
     position: fixed;
     overflow: hidden;
     overflow-y: auto;
-    color: var(--background-color);
+    color: var(--light-secondary-color);
     flex-direction: column-reverse;
-    background-color: var(--primary-color);
+    background: linear-gradient(-15deg, #13d401, #4825c7, #6bd7ff);
+    background-size: 500% 500%;
+    animation: gradient 4s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   .panel-bar {
@@ -26,10 +40,11 @@
     position: absolute;
     padding: 30px 10px;
     flex-direction: column;
-    border-radius: 20px 20px 0 0;
     transition: all 0.5s ease 0s;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     -webkit-transition: all 0.5s ease 0s;
-    background-color: var(--dark-primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   }
 
@@ -51,7 +66,6 @@
     justify-content: center;
     border-radius: 20px 20px 0 0;
     background-color: transparent;
-    border: 2px solid var(--light-color);
     box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   }
 
@@ -63,11 +77,11 @@
 
   .panel-icon-nav {
     height: 30px;
-    fill: var(--background-color);
+    fill: var(--light-secondary-color);
   }
 
   .open-p {
-    height: 70%;
+    height: 100%;
   }
 
   .close-p {
@@ -124,12 +138,11 @@
     display: flex;
     padding: 15px;
     font-size: .9rem;
-    border-radius: 4px;
+    border-radius: 12px;
     align-items: center;
     color: var(--light-color);
     justify-content: space-between;
-    border: 1px solid var(--background-color);
-    background-color: var(--dark-primary-color);
+    border: 1px solid var(--light-secondary-color);
   }
 
   .panel-btn span {
@@ -140,8 +153,7 @@
 
   .panel-btn:hover {
     color: var(--background-color);
-    border: 1px solid var(--secondary-color);
-    background-color: var(--secondary-color);
+    background-color: var(--light-secondary-color);
   }
 
   .panel-btn:hover .icon-panel {
@@ -150,13 +162,13 @@
 
   .icon-panel {
     height: 20px;
-    fill: var(--background-color);
+    fill: var(--light-secondary-color);
   }
 
   .active-cp {
     color: var(--background-color);
-    border: 1px solid var(--secondary-color);
-    background-color: var(--secondary-color);
+    border: 1px solid var(--light-secondary-color);
+    background-color: var(--light-secondary-color);
   }
 
   .active-cp .icon-panel {
@@ -164,9 +176,9 @@
   }
 
   .inactive-cp {
-    color: var(--light-color);
-    border: 1px solid var(--background-color);
-    background-color: var(--dark-primary-color);
+    color: var(--light-secondary-color);
+    border: 1px solid var(--light-secondary-color);
+    background-color: transparent;
   }
 
   .panel-main {
@@ -188,7 +200,6 @@
       height: 100%;
       padding: 10px;
       position: relative;
-      border-radius: 0 20px 20px 0;
     }
 
     .open-p {
@@ -219,7 +230,7 @@
     }
     
     .panel-btn {
-      font-size: .9rem;
+      font-size: 1rem;
     }
 
 

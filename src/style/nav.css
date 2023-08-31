@@ -13,6 +13,7 @@
     background-color: transparent;
   }
 
+
   .menu-icon {
     width: 40px;
     height: 40px;
@@ -164,6 +165,11 @@
     color: var(--light-secondary-color);
     background-color: transparent;
   }
+
+  .btn-end {
+    width: 100%;
+  }
+
 }
 
 /* using it as global style for larger devices  */
